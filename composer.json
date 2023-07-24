@@ -1,0 +1,32 @@
+{
+    "name": "cmxperts/media-manager",
+    "description": "Media Manager, Upload, Add, Delete Media Files",
+    "keywords": ["laravel", "media", "images", "uploader", "uppy"],
+    "license": "MIT",
+    "require": {
+        "laravel/framework": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CmXperts\\MediaManager\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "U D Parashar",
+            "email": "cmxperts@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CmXperts\\MediaManager\\CmXpertsMediaManagerServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true
+}
