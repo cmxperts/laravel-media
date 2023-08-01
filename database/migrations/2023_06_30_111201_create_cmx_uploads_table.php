@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cmx_uploads', function (Blueprint $table) {
+        Schema::create(config('cmx_media.table_prefix') . config('cmx_media.table'), function (Blueprint $table) {
             $table->integer('id', true);
             $table->unsignedBigInteger('user_id')->nullable()->index('user_id');
             $table->string('file_original_name')->nullable();
@@ -24,6 +24,11 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
+
+            // Add the foreign key constraint
+            Schema::table(config('cmx_media.table_prefix') . config('cmx_media.table'), function (Blueprint $table) {
+                $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+            });
         });
     }
 
@@ -34,6 +39,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cmx_uploads');
+        Schema::table(config('cmx_media.table_prefix') . config('cmx_media.table'), function (Blueprint $table) {
+            $table->dropForeign('cmx_uploads_user_id_foreign');
+        });
+
+        Schema::dropIfExists(config('cmx_media.table_prefix') . config('cmx_media.table'));
     }
 };
