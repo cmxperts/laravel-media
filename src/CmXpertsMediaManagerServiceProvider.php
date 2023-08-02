@@ -73,7 +73,7 @@ class CmXpertsMediaManagerServiceProvider extends ServiceProvider
             __DIR__ . '/../database/migrations' => database_path('migrations'),
         ], 'cmx-media-migrations');
         $this->publishes([
-            __DIR__ . '/../payload/assets' => public_path('cmx-media/assets'),
+            __DIR__ . '/../payload/assets' => public_path('cmxperts/media/assets'),
         ], 'cmx-media-assets-files');
     }
 
