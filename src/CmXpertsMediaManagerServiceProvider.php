@@ -76,5 +76,4 @@ class CmXpertsMediaManagerServiceProvider extends ServiceProvider
             __DIR__ . '/../payload/assets' => public_path('cmxperts/media/assets'),
         ], 'cmx-media-assets-files');
     }
-
 }
