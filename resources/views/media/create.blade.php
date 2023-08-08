@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @push('plugin-styles')
     {!! Html::style('assets/css/loader.css') !!}
