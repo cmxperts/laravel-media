@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @push('plugin-styles')
-    {!! Html::style('assets/css/loader.css') !!}
     {!! Html::style('plugins/bootstrap-select/bootstrap-select.min.css') !!}
     {!! Html::style('assets/css/forms/form-widgets.css') !!}
     {!! Html::style('plugins/flatpickr/flatpickr.css') !!}
@@ -16,7 +15,7 @@
             <div class="navbar-nav flex-column">
                 <h2>{{__('All uploaded files')}}</h2>
             </div>
-            <ul class="navbar-nav d-flex align-center ml-auto right-side-filter flex-column">
+            <ul class="navbar-nav d-flex align-center ml-auto ms-auto right-side-filter flex-column">
                 <li>
                     <a href="{{ route('cmx-media.create') }}" class="btn btn-primary">
                         <span>{{__('Upload New File')}}</span>
@@ -45,7 +44,7 @@
                                 <div class="col-md-3">
                                     <h5 class="mt-3 h6">{{__('All files')}}</h5>
                                 </div>
-                                <div class="col-md-3 ml-auto mr-0">
+                                <div class="col-md-3 ml-auto ms-auto mr-0 me-0">
                                     <select class="form-control selectpicker" name="sort"
                                             onchange="CMX.uploader.sort()">
                                         <option value="newest"
@@ -163,7 +162,6 @@
 @endsection
 
 @push('plugin-scripts')
-    {!! Html::script('assets/js/loader.js') !!}
     {!! Html::script('assets/js/forms/forms-validation.js') !!}
     {!! Html::script('plugins/bootstrap-select/bootstrap-select.min.js') !!}
     {!! Html::script('plugins/flatpickr/flatpickr.js') !!}

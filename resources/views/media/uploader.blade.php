@@ -1,4 +1,4 @@
-<div class="modal fade" id="cmxUploaderModal" data-backdrop="static" role="dialog" aria-hidden="true" >
+<div class="modal fade" id="cmxUploaderModal" data-backdrop="static" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-adaptive" role="document">
 		<div class="modal-content h-100">
 			<div class="modal-header pb-0 bg-light">
@@ -12,7 +12,7 @@
 						</li>
 					</ul>
 				</div>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close btn-close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true"></span>
 				</button>
 			</div>
@@ -41,7 +41,7 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-md-4 col-xl-3 ml-auto mr-0 col-2 position-static">
+								<div class="col-md-4 col-xl-3 ml-auto mr-0 ms-auto me-0 col-2 position-static">
 									<div class="cmx-uploader-search text-right">
 										<input type="text" class="form-control form-control-xs" name="cmx-uploader-search" placeholder="{{ __('Search your files') }}">
 										<i class="search-icon d-md-none"><span></span></i>
@@ -64,13 +64,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer justify-content-between bg-light">
+			<div class="modal-footer justify-content-between bg-light text-black-50">
 				<div class="flex-grow-1 overflow-hidden d-flex">
 					<div class="">
 						<div class="cmx-uploader-selected">{{ __('0 File selected') }}</div>
 						<button type="button" class="btn-link btn btn-sm p-0 cmx-uploader-selected-clear">{{ __('Clear') }}</button>
 					</div>
-					<div class="mb-0 ml-3">
+					<div class="mb-0 ml-3 ms-3">
 						<button type="button" class="btn btn-sm btn-primary" id="uploader_prev_btn">{{ __('Prev') }}</button>
 						<button type="button" class="btn btn-sm btn-primary" id="uploader_next_btn">{{ __('Next') }}</button>
 					</div>

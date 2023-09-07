@@ -67,6 +67,7 @@ class UploadController extends Controller
     public function upload(Request $request)
     {
         $type = array(
+            "ico" => "image",
             "jpg" => "image",
             "jpeg" => "image",
             "png" => "image",
@@ -122,7 +123,7 @@ class UploadController extends Controller
                     }
                 }
 
-                $path = $request->file('cmx_file')->store('public/uploads/all', 'local');
+                $path = $request->file('cmx_file')->store('uploads/all', 'local');
                 $path = substr($path, 7);
 
                 $size = $request->file('cmx_file')->getSize();
@@ -131,7 +132,7 @@ class UploadController extends Controller
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
                 // Get the MIME type of the file
-                $file_mime = finfo_file($finfo, base_path('public/storage/') . $path);
+                $file_mime = finfo_file($finfo, base_path('storage/') . $path);
 
                 /*if ($type[$extension] == 'image') { // && get_setting('disable_image_optimization') != 1){
                     try {
@@ -159,14 +160,14 @@ class UploadController extends Controller
                 if (env('FILESYSTEM_DRIVER') == 's3') {
                     Storage::disk('s3')->put(
                         $path,
-                        file_get_contents(base_path('public/') . $path),
+                        file_get_contents(base_path('/') . $path),
                         [
                             'visibility' => 'public',
                             'ContentType' => $extension == 'svg' ? 'image/svg+xml' : $file_mime
                         ]
                     );
                     if ($arr[0] != 'updates') {
-                        unlink(base_path('public/') . $path);
+                        unlink(base_path('/') . $path);
                     }
                 }
 

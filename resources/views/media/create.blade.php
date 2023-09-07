@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @push('plugin-styles')
-    {!! Html::style('assets/css/loader.css') !!}
     {!! Html::style('plugins/bootstrap-select/bootstrap-select.min.css') !!}
     {!! Html::style('assets/css/forms/form-widgets.css') !!}
     {!! Html::style('plugins/flatpickr/flatpickr.css') !!}
@@ -16,7 +15,7 @@
             <div class="navbar-nav flex-column">
                 <h2>{{__('Upload New File')}}</h2>
             </div>
-            <ul class="navbar-nav d-flex align-center ml-auto right-side-filter flex-column">
+            <ul class="navbar-nav d-flex align-center ml-auto ms-auto right-side-filter flex-column">
                 <li>
                     <a href="{{ route('cmx-media.index') }}" class="btn btn-link text-reset">
                         <i class="las la-angle-left"></i>
@@ -65,7 +64,6 @@
 @endpush
 
 @push('plugin-scripts')
-    {!! Html::script('assets/js/loader.js') !!}
     {!! Html::script('assets/js/forms/forms-validation.js') !!}
     {!! Html::script('plugins/bootstrap-select/bootstrap-select.min.js') !!}
     {!! Html::script('plugins/flatpickr/flatpickr.js') !!}

@@ -59,7 +59,7 @@ if (!function_exists('my_asset')) {
         if (env('FILESYSTEM_DRIVER') == 's3') {
             return Storage::disk('s3')->url($path);
         } else {
-            return app('url')->asset('public/' . $path, $secure);
+            return app('url')->asset('storage/' . $path, $secure);
         }
     }
 }
@@ -80,7 +80,7 @@ if (!function_exists('getFileBaseURL')) {
         if (env('FILESYSTEM_DRIVER') == 's3') {
             return env('AWS_URL') . '/';
         } else {
-            return getBaseURL() . 'public/';
+            return getBaseURL() . 'storage/';
         }
     }
 }
