@@ -124,7 +124,6 @@ class UploadController extends Controller
                 }
 
                 $path = $request->file('cmx_file')->store('uploads/all', 'local');
-                $path = substr($path, 7);
 
                 $size = $request->file('cmx_file')->getSize();
 
@@ -132,7 +131,7 @@ class UploadController extends Controller
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
                 // Get the MIME type of the file
-                $file_mime = finfo_file($finfo, base_path('storage/') . $path);
+                $file_mime = finfo_file($finfo, base_path('storage/app/') . $path);
 
                 /*if ($type[$extension] == 'image') { // && get_setting('disable_image_optimization') != 1){
                     try {
@@ -172,7 +171,7 @@ class UploadController extends Controller
                 }
 
                 $upload->extension = $extension;
-                $upload->file_name = $path;
+                $upload->file_name = substr($path, 7);
                 $upload->user_id = Auth::user()->id;
                 $upload->type = $type[$upload->extension];
                 $upload->file_size = $size;
