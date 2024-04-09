@@ -18,7 +18,7 @@ Route::group([
 
     Route::controller(UploadController::class)->group(function () {
         Route::get('/destroy/{id}', 'destroy')->name('cmx-media.destroy');
-        Route::any('/file-info', 'file_info')->name('cmx-media.file-info');
+        Route::post('/file-info', 'file_info')->name('cmx-media.file-info');
 
         Route::post('/show-uploader', 'show_uploader')->name('cmx-media.uploader');
         Route::post('/upload', 'upload')->name('cmx-media.upload');

@@ -4,7 +4,8 @@ namespace CmXperts\MediaManager\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use CmXperts\MediaManager\Models\Upload;
+//use CmXperts\MediaManager\Models\Upload;
+use Illuminate\Support\Facades\Config;
 use Response;
 use Auth;
 use Storage;
@@ -16,7 +17,8 @@ class UploadController extends Controller
 
     public function __construct()
     {
-        $this->model = new Upload();
+        $modelClass = config('cmx_media.model');
+        $this->model = new $modelClass; // Instantiate the model
     }
 
     public function index(Request $request)
@@ -109,7 +111,7 @@ class UploadController extends Controller
         );
 
         if ($request->hasFile('cmx_file')) {
-            $upload = new Upload;
+            $upload = $this->model;
             $extension = strtolower($request->file('cmx_file')->getClientOriginalExtension());
 
             if (isset($type[$extension])) {
@@ -123,7 +125,9 @@ class UploadController extends Controller
                     }
                 }
 
-                $path = $request->file('cmx_file')->store('uploads/all', 'local');
+                $path = $request->file('cmx_file')->store('uploads/all', 'public');
+//                echo $path; die();
+//                $path = substr($path, 7);
 
                 $size = $request->file('cmx_file')->getSize();
 
@@ -131,7 +135,7 @@ class UploadController extends Controller
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
                 // Get the MIME type of the file
-                $file_mime = finfo_file($finfo, base_path('storage/app/') . $path);
+                $file_mime = finfo_file($finfo, base_path('public/storage/') . $path);
 
                 /*if ($type[$extension] == 'image') { // && get_setting('disable_image_optimization') != 1){
                     try {
@@ -171,7 +175,7 @@ class UploadController extends Controller
                 }
 
                 $upload->extension = $extension;
-                $upload->file_name = substr($path, 7);
+                $upload->file_name = $path;
                 $upload->user_id = Auth::user()->id;
                 $upload->type = $type[$upload->extension];
                 $upload->file_size = $size;
